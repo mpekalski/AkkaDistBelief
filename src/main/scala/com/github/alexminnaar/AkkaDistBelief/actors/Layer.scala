@@ -95,7 +95,7 @@ class Layer(replicaId: Int,
 
           //compute the deltas for this parent layer (there must be one if this is the output layer)
           val parentDeltas = computeDeltas(deltas, activations, latestWeights, activationFunctionDerivative)
-          context.sender() ! BackwardPass(parentDeltas)
+          context.sender ! BackwardPass(parentDeltas)
 
           //If this is the last layer then send the predictions to the output actor
           outputAct.get ! Output(replicaId, target, activatedOutputs)
