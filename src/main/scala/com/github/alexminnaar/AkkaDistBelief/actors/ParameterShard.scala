@@ -33,7 +33,7 @@ class ParameterShard(shardId: Int,
     //A layer corresponding to this shardId in some model replica has requested the latest version of the parameters.
     case ParameterRequest(shardId, layerId) => {
       log.info(s"layer ${layerId} weights read by model replica ${shardId}")
-      context.sender() ! LatestParameters(latestParameter)
+      context.sender ! LatestParameters(latestParameter)
     }
 
     /*
